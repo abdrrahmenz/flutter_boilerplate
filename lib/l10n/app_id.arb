@@ -1,0 +1,7 @@
+{
+    "@@locale": "id",
+    "counterAppBarTitle": "Perhitungan",
+    "@counterAppBarTitle": {
+        "description": "Teks ditampilkan di AppBar dari Halaman Penghitung"
+    }
+}
