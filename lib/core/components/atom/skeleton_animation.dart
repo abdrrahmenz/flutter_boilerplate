@@ -4,7 +4,7 @@ import '../../../../core/core.dart';
 
 class SkeletonAnimation extends StatelessWidget {
   const SkeletonAnimation({
-    Key? key,
+    super.key,
     this.backgroundColor,
     this.width,
     this.height,
@@ -13,7 +13,7 @@ class SkeletonAnimation extends StatelessWidget {
     this.baseColor,
     this.highlightColor,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   final Color? backgroundColor;
   final Color? baseColor;
@@ -28,16 +28,16 @@ class SkeletonAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor:
-      baseColor ?? context.adaptiveTheme.solidTextColor!.withOpacity(.1),
-      highlightColor: highlightColor ??
-          context.adaptiveTheme.solidTextColor!.withOpacity(.2),
+          baseColor ?? context.adaptiveTheme.solidTextColor!.withAlpha(26),
+      highlightColor:
+          highlightColor ?? context.adaptiveTheme.solidTextColor!.withAlpha(51),
       child: child ??
           Container(
             width: width ?? double.infinity,
             height: height,
             decoration: BoxDecoration(
-              color: backgroundColor ??
-                  context.theme.disabledColor.withOpacity(.5),
+              color:
+                  backgroundColor ?? context.theme.disabledColor.withAlpha(128),
               borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 16),
             ),
           ),

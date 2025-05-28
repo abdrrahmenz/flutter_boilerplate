@@ -3,11 +3,11 @@ import '../../core.dart';
 
 class ContentSheet extends StatelessWidget {
   const ContentSheet({
-    Key? key,
+    super.key,
     required this.content,
     this.height,
     this.expandContent = true,
-  }) : super(key: key);
+  });
 
   final Widget content;
   final double? height;
@@ -57,7 +57,7 @@ class ContentSheet extends StatelessWidget {
       width: 80,
       height: 4,
       decoration: BoxDecoration(
-        color: context.adaptiveTheme.tertiaryColor.withOpacity(.1),
+        color: context.adaptiveTheme.tertiaryColor.withAlpha(26),
         borderRadius: BorderRadius.circular(Dimens.dp4),
       ),
     );

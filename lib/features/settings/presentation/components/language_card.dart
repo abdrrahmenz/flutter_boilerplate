@@ -3,12 +3,12 @@ import '../../../../core/core.dart';
 
 class LanguageCard extends StatelessWidget {
   const LanguageCard({
-    Key? key,
+    super.key,
     this.isActive = false,
     required this.image,
     required this.country,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final bool isActive;
   final String image, country;
@@ -20,7 +20,7 @@ class LanguageCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimens.dp8),
         border: Border.all(
-          color: context.adaptiveTheme.tertiaryColor.withOpacity(.3),
+          color: context.adaptiveTheme.tertiaryColor.withAlpha(77),
         ),
       ),
       child: InkWell(
@@ -55,7 +55,7 @@ class LanguageCard extends StatelessWidget {
           )
         : Icon(
             Icons.lens,
-            color: context.adaptiveTheme.tertiaryColor.withOpacity(.5),
+            color: context.adaptiveTheme.tertiaryColor.withAlpha(128),
             size: Dimens.dp20,
           );
   }

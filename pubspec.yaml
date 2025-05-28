@@ -32,6 +32,8 @@ dependencies:
   shimmer: ^3.0.0
   stream_transform: ^2.1.1
   webview_flutter: ^4.13.0
+  webview_flutter_android: ^4.7.0
+  webview_flutter_wkwebview: ^3.22.0
 
 dev_dependencies:
   flutter_test:

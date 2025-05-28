@@ -4,7 +4,7 @@ import '../../../core.dart';
 
 class PhoneTextInput extends StatefulWidget {
   const PhoneTextInput({
-    Key? key,
+    super.key,
     this.style,
     this.onChange,
     this.focusNode,
@@ -17,7 +17,7 @@ class PhoneTextInput extends StatefulWidget {
     this.label,
     this.isRequired,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final TextStyle? style;
   final ValueChanged<String>? onChange;
@@ -209,7 +209,7 @@ class _PhoneTextInputState extends State<PhoneTextInput> {
 }
 
 class _CountryList extends StatefulWidget {
-  const _CountryList({Key? key, this.onChange}) : super(key: key);
+  const _CountryList({this.onChange});
 
   final ValueChanged<Country>? onChange;
 

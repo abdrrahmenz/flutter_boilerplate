@@ -7,12 +7,9 @@ abstract class ServerException implements Exception {
 
 class GeneralServerException extends ServerException {
   const GeneralServerException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() => 'GeneralServerException(message: $message, code: $code)';
@@ -20,12 +17,9 @@ class GeneralServerException extends ServerException {
 
 class TimeOutServerException extends ServerException {
   const TimeOutServerException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() => 'TimeOutServerException(message: $message, code: $code)';
@@ -33,12 +27,9 @@ class TimeOutServerException extends ServerException {
 
 class NotFoundServerException extends ServerException {
   const NotFoundServerException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() =>
@@ -47,12 +38,9 @@ class NotFoundServerException extends ServerException {
 
 class UnAuthenticationServerException extends ServerException {
   const UnAuthenticationServerException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() =>
@@ -61,12 +49,9 @@ class UnAuthenticationServerException extends ServerException {
 
 class UnAuthorizeServerException extends ServerException {
   const UnAuthorizeServerException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() =>
@@ -75,12 +60,9 @@ class UnAuthorizeServerException extends ServerException {
 
 class InternalServerException extends ServerException {
   const InternalServerException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() =>

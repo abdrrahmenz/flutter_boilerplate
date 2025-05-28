@@ -10,14 +10,14 @@ import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class WebViewPage extends StatefulWidget {
   const WebViewPage({
-    Key? key,
+    super.key,
     this.appBar,
     required this.url,
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.onUpdateVisitedUri,
     this.onWebViewCreated,
-  }) : super(key: key);
+  });
 
   final PreferredSizeWidget? appBar;
   final String url;
@@ -146,7 +146,7 @@ Page resource error:
             height: 3,
             child: LinearProgressIndicator(
               value: progress,
-              backgroundColor: context.theme.disabledColor.withOpacity(.3),
+              backgroundColor: context.theme.disabledColor.withAlpha(77),
             ),
           )
         : const SizedBox();

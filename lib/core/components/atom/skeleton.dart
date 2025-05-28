@@ -3,12 +3,12 @@ import '../../../../core/core.dart';
 
 class Skeleton extends StatelessWidget {
   const Skeleton({
-    Key? key,
+    super.key,
     this.backgroundColor,
     this.width,
     this.height,
     this.radius,
-  }) : super(key: key);
+  });
 
   final Color? backgroundColor;
   final double? width;
@@ -22,7 +22,7 @@ class Skeleton extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 4),
-        color: backgroundColor ?? context.theme.disabledColor.withOpacity(.5),
+        color: backgroundColor ?? context.theme.disabledColor.withAlpha(128),
       ),
     );
   }

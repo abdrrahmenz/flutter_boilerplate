@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -14,7 +13,7 @@ enum AppTheme {
 
 extension AppThemeX on AppTheme {
   String toText() {
-    return describeEnum(this);
+    return name;
   }
 
   ThemeData toThemeData() {

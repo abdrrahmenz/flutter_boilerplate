@@ -3,13 +3,13 @@ import '../../../../core/core.dart';
 
 class HeadingText extends StatelessWidget {
   const HeadingText(
-      this.text, {
-        Key? key,
-        this.style,
-        this.maxLine,
-        this.overflow,
-        this.align,
-      }) : super(key: key);
+    this.text, {
+    super.key,
+    this.style,
+    this.maxLine,
+    this.overflow,
+    this.align,
+  });
 
   final String text;
   final TextStyle? style;

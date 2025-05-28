@@ -12,12 +12,9 @@ class CacheException implements Exception {
 ///
 class NotFoundCacheException extends CacheException {
   const NotFoundCacheException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() => 'NotFoundCacheException(message: $message, code: $code)';
@@ -26,12 +23,9 @@ class NotFoundCacheException extends CacheException {
 /// Throw when cache is expired
 class ExpiredCacheException extends CacheException {
   const ExpiredCacheException({
-    required String message,
-    Object? code,
-  }) : super(
-          message: message,
-          code: code,
-        );
+    required super.message,
+    super.code,
+  });
 
   @override
   String toString() => 'ExpiredCacheException(message: $message, code: $code)';

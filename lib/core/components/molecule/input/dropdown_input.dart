@@ -3,7 +3,7 @@ import '../../../core.dart';
 
 class DropdownInput extends StatefulWidget {
   const DropdownInput({
-    Key? key,
+    super.key,
     this.label,
     this.isRequired,
     this.hintText,
@@ -13,7 +13,7 @@ class DropdownInput extends StatefulWidget {
     this.errorText,
     this.onChanged,
     required this.valueController,
-  }) : super(key: key);
+  });
 
   final String? label;
   final bool? isRequired;

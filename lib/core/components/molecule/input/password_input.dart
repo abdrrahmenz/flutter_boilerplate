@@ -4,7 +4,7 @@ import '../../../core.dart';
 
 class PasswordInput extends StatefulWidget {
   const PasswordInput({
-    Key? key,
+    super.key,
     this.controller,
     this.focusNode,
     this.hintText,
@@ -17,7 +17,7 @@ class PasswordInput extends StatefulWidget {
     this.style,
     this.inputType,
     this.maxLength,
-  }) : super(key: key);
+  });
 
   final TextEditingController? controller;
   final FocusNode? focusNode;

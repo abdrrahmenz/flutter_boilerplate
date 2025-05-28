@@ -3,23 +3,23 @@ import '../../../../core/core.dart';
 
 class RegularText extends StatelessWidget {
   const RegularText(
-      this.text, {
-        Key? key,
-        this.style,
-        this.maxLine,
-        this.overflow,
-        this.align,
-      }) : super(key: key);
+    this.text, {
+    super.key,
+    this.style,
+    this.maxLine,
+    this.overflow,
+    this.align,
+  });
 
   factory RegularText.normalSolid(
-      BuildContext context,
-      String text, {
-        Key? key,
-        TextStyle? style,
-        int? maxLine,
-        TextOverflow? overflow,
-        TextAlign? align,
-      }) {
+    BuildContext context,
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
     return RegularText(
       text,
       key: key,
@@ -34,14 +34,14 @@ class RegularText extends StatelessWidget {
   }
 
   factory RegularText.mediumSolid(
-      BuildContext context,
-      String text, {
-        Key? key,
-        TextStyle? style,
-        int? maxLine,
-        TextOverflow? overflow,
-        TextAlign? align,
-      }) {
+    BuildContext context,
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
     return RegularText(
       text,
       key: key,
@@ -56,14 +56,14 @@ class RegularText extends StatelessWidget {
   }
 
   factory RegularText.semiBoldSolid(
-      BuildContext context,
-      String text, {
-        Key? key,
-        TextStyle? style,
-        int? maxLine,
-        TextOverflow? overflow,
-        TextAlign? align,
-      }) {
+    BuildContext context,
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
     return RegularText(
       text,
       key: key,

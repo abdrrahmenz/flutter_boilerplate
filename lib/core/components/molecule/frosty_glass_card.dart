@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 class FrostyGlassCard extends StatelessWidget {
   const FrostyGlassCard({
-    Key? key,
+    super.key,
     this.color = Colors.white,
     this.borderRadius,
     this.border,
     this.child,
-  }) : super(key: key);
+  });
 
   final Color color;
   final BorderRadius? borderRadius;
@@ -25,7 +25,7 @@ class FrostyGlassCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             border: border,
-            color: color.withOpacity(0.4),
+            color: color.withAlpha(102),
             borderRadius: borderRadius,
           ),
           child: child,

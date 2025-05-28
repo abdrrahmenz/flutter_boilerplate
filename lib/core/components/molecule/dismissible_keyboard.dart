@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DismissibleKeyboard extends StatelessWidget {
-  const DismissibleKeyboard({Key? key, this.child}) : super(key: key);
+  const DismissibleKeyboard({super.key, this.child});
 
   final Widget? child;
 

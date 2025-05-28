@@ -4,7 +4,7 @@ import '../../../core.dart';
 
 class SearchTextInput extends StatelessWidget {
   const SearchTextInput({
-    Key? key,
+    super.key,
     required this.controller,
     this.hintText,
     this.onClear,
@@ -18,7 +18,7 @@ class SearchTextInput extends StatelessWidget {
     this.background,
     this.textColor,
     this.suffixColor,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final String? hintText;

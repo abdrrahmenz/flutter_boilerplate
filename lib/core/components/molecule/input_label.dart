@@ -3,10 +3,10 @@ import '../../core.dart';
 
 class InputLabel extends StatelessWidget {
   const InputLabel({
-    Key? key,
+    super.key,
     this.label,
     this.isRequired,
-  }) : super(key: key);
+  });
 
   final String? label;
   final bool? isRequired;

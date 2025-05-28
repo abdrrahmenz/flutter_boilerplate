@@ -8,7 +8,7 @@ import '../../../core.dart';
 /// Pin code text fields which automatically changes focus and validates
 class OtpTextInput extends StatefulWidget {
   OtpTextInput({
-    Key? key,
+    super.key,
     required this.length,
     this.obscureText = false,
     this.obscuringCharacter = '●',
@@ -43,11 +43,10 @@ class OtpTextInput extends StatefulWidget {
     this.cursorWidth = 2,
     this.cursorHeight,
     this.errorText,
-  })  : assert(
+  }) : assert(
           obscuringCharacter.isNotEmpty,
           'obscuringCharacter cannot be empty',
-        ),
-        super(key: key);
+        );
 
   /// length of how many cells there should be. 3-8 is recommended by me
   final int length;
@@ -344,9 +343,9 @@ class _OtpTextInputState extends State<OtpTextInput>
         _focusNode.hasFocus) {
       return context.adaptiveTheme.primaryColor;
     } else if (_selectedIndex > index) {
-      return context.adaptiveTheme.tertiaryColor.withOpacity(.2);
+      return context.adaptiveTheme.tertiaryColor.withAlpha(51);
     }
-    return context.adaptiveTheme.tertiaryColor.withOpacity(.2);
+    return context.adaptiveTheme.tertiaryColor.withAlpha(51);
   }
 
   Widget _renderPinField({

@@ -21,8 +21,8 @@ class RecordErrorUseCase
             : StackTrace.fromString(params.stackTrace.toString()),
       );
       return const Right(true);
-    } catch (_) {
-      return Left(CodeFailure(message: _.toString()));
+    } catch (e) {
+      return Left(CodeFailure(message: e.toString()));
     }
   }
 }

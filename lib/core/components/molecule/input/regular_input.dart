@@ -4,6 +4,7 @@ import '../../../core.dart';
 
 class RegularInput extends StatelessWidget {
   const RegularInput({
+    super.key,
     this.obscureText = false,
     this.focusNode,
     this.hintText,
@@ -29,8 +30,7 @@ class RegularInput extends StatelessWidget {
     this.prefix,
     this.isRequired,
     this.textColor,
-    Key? key,
-  }) : super(key: key);
+  });
 
   final IconData? prefixIcon;
   final bool enable;
@@ -106,7 +106,7 @@ class RegularInput extends StatelessWidget {
                         )
                       : null),
               counterText: '',
-              fillColor: background ?? disabledColor?.withOpacity(0.2),
+              fillColor: background ?? disabledColor?.withAlpha(51),
               hintText: hintText ?? '',
               hintStyle: TextStyle(color: textColor ?? disabledColor),
               errorText: errorText,

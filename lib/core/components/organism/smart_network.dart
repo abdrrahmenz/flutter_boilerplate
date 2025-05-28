@@ -6,14 +6,14 @@ import '../../core.dart';
 class SmartNetworkImage extends StatelessWidget {
   const SmartNetworkImage(
     this.url, {
-    Key? key,
+    super.key,
     this.width,
     this.height,
     this.fit,
     this.radius,
     this.withCache,
     this.address,
-  }) : super(key: key);
+  });
 
   final String url;
   final double? width;

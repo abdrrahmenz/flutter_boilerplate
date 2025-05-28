@@ -3,22 +3,22 @@ import '../../../../core/core.dart';
 
 class SubTitleText extends StatelessWidget {
   const SubTitleText(
-      this.text, {
-        Key? key,
-        this.style,
-        this.maxLine,
-        this.overflow,
-        this.align,
-      }) : super(key: key);
+    this.text, {
+    super.key,
+    this.style,
+    this.maxLine,
+    this.overflow,
+    this.align,
+  });
 
   factory SubTitleText.light(
-      String text, {
-        Key? key,
-        TextStyle? style,
-        int? maxLine,
-        TextOverflow? overflow,
-        TextAlign? align,
-      }) {
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
     return SubTitleText(
       text,
       key: key,
