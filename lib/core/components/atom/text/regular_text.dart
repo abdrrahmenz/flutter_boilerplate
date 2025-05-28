@@ -33,6 +33,25 @@ class RegularText extends StatelessWidget {
     );
   }
 
+  factory RegularText.large(
+    BuildContext context,
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
+    return RegularText(
+      text,
+      key: key,
+      style: context.theme.textTheme.bodyLarge?.merge(style),
+      align: align,
+      maxLine: maxLine,
+      overflow: overflow,
+    );
+  }
+
   factory RegularText.mediumSolid(
     BuildContext context,
     String text, {

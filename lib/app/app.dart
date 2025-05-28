@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 
 import '../core/core.dart';
@@ -9,7 +10,7 @@ import '../features/auth/auth.dart';
 import '../features/settings/settings.dart';
 import '../l10n/app_localizations.dart';
 import 'config.dart';
-import 'route.dart';
+import 'modules.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -61,8 +62,29 @@ class App extends StatelessWidget {
   }
 }
 
-class _AppWidget extends StatelessWidget {
+class _AppWidget extends StatefulWidget {
   const _AppWidget();
+
+  @override
+  State<_AppWidget> createState() => _AppWidgetState();
+}
+
+class _AppWidgetState extends State<_AppWidget> {
+  @override
+  void initState() {
+    EasyLoading.instance
+      ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+      ..loadingStyle = EasyLoadingStyle.custom
+      ..maskType = EasyLoadingMaskType.black
+      ..radius = Dimens.dp8
+      ..backgroundColor = AppColors.white
+      ..indicatorColor = AppColors.red
+      ..textColor = AppColors.black
+      ..userInteractions = false
+      ..toastPosition = EasyLoadingToastPosition.bottom
+      ..animationStyle = EasyLoadingAnimationStyle.offset;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,15 +93,21 @@ class _AppWidget extends StatelessWidget {
 
     return MaterialApp(
       title: AppConfig.appName,
+      navigatorKey: navigationKey,
       theme: themeState.theme.toThemeData(),
       locale: languageState.language != null
           ? Locale(languageState.language!.code)
           : null,
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
       supportedLocales: AppLocalizations.supportedLocales,
       navigatorObservers: [routeObserver],
-      onGenerateRoute: route,
+      onGenerateRoute: Modular.routes,
       home: const SplashPage(),
       builder: EasyLoading.init(),
     );

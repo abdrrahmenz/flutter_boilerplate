@@ -5,27 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter",
+            "name": "Boilerplate Dev",
             "type": "dart",
             "request": "launch",
-            "program": "lib/main_dev.dart"
+            "program": "lib/main_dev.dart",
+            "args": [
+                "--flavor",
+                "dev",
+                "--target",
+                "lib/main_dev.dart"
+            ]
         },
         {
-            "name": "flutter_boilerplate",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter_boilerplate (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "flutter_boilerplate (release mode)",
+            "name": "Boilerplate Prod",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "program": "lib/main_prod.dart",
+            "args": [
+                "--flavor",
+                "prod",
+                "--target",
+                "lib/main_prod.dart"
+            ]
         }
     ]
 }

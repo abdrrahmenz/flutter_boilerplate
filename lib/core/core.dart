@@ -4,6 +4,7 @@ export 'exceptions/exceptions.dart';
 export 'extensions/extensions.dart';
 export 'failures/failures.dart';
 export 'helpers/helpers.dart';
+export 'module/module.dart';
 export 'networks/networks.dart';
 export 'pages/pages.dart';
 export 'preferences/preferences.dart';

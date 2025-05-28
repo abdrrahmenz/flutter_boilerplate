@@ -5,6 +5,13 @@ class AppColors {
   // ------------------------------------------------- //
   // Color's pallete from https://materialui.co/colors/
   // ------------------------------------------------- //
+  static const black = MaterialColor(0xFF000000, {
+    100: Color(0xFF616161),
+    300: Color(0xFF424242),
+    500: Color(0xFF212121),
+    700: Color(0xFF121212),
+    900: Color(0xFF000000),
+  });
 
   static const blue = MaterialColor(0xFF1D4ED8, {
     100: Color(0xFFBBDEFB),
