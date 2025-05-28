@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../l10n/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../settings.dart';
 
 part 'language_event.dart';

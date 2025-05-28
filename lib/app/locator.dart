@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import '../core/core.dart';
 
@@ -20,13 +20,13 @@ Future<void> setupLocator() async {
   // Data
   getIt
     ..registerLazySingleton<AuthApiSource>(
-          () => AuthApiSourceImpl(getIt(), authLocalSource: getIt()),
+      () => AuthApiSourceImpl(getIt(), authLocalSource: getIt()),
     )
     ..registerLazySingleton<AuthLocalSource>(
-          () => AuthLocalSourceImpl(getIt()),
+      () => AuthLocalSourceImpl(getIt()),
     )
     ..registerLazySingleton<AuthRepository>(
-          () => AuthRepositoryImpl(getIt()),
+      () => AuthRepositoryImpl(getIt()),
     );
 
   // Domain
@@ -41,13 +41,13 @@ Future<void> setupLocator() async {
   // Presentation
   getIt
     ..registerLazySingleton(() => AuthBloc(
-      changePasswordUseCase: getIt(),
-      getProfileUseCase: getIt(),
-      loginUseCase: getIt(),
-      logoutUseCase: getIt(),
-      registerUseCase: getIt(),
-      updateProfileUseCase: getIt(),
-    ))
+          changePasswordUseCase: getIt(),
+          getProfileUseCase: getIt(),
+          loginUseCase: getIt(),
+          logoutUseCase: getIt(),
+          registerUseCase: getIt(),
+          updateProfileUseCase: getIt(),
+        ))
     ..registerLazySingleton(() => FormAuthBloc())
     ..registerLazySingleton(() => FormAccountBloc());
 
@@ -200,10 +200,10 @@ Future<void> setupLocator() async {
   // Data
   getIt
     ..registerLazySingleton<SettingsLocalSource>(
-          () => SettingsLocalSourceImpl(getIt()),
+      () => SettingsLocalSourceImpl(getIt()),
     )
     ..registerLazySingleton<SettingsRepository>(
-          () => SettingsRepositoryImpl(localSource: getIt()),
+      () => SettingsRepositoryImpl(localSource: getIt()),
     );
 
   // Domain
@@ -223,14 +223,14 @@ Future<void> setupLocator() async {
   // Presentation
   getIt
     ..registerFactory(
-          () => LanguageBloc(
+      () => LanguageBloc(
         getLanguageSetting: getIt(),
         saveLanguageSetting: getIt(),
         getSupportedLanguage: getIt(),
       ),
     )
     ..registerFactory(
-          () => ThemeBloc(
+      () => ThemeBloc(
         getThemeSetting: getIt(),
         saveThemeSetting: getIt(),
       ),
@@ -240,12 +240,12 @@ Future<void> setupLocator() async {
 Future<void> _setupCore() async {
   EquatableConfig.stringify = AppConfig.autoStringifyEquatable;
 
-  getIt.registerLazySingleton(InternetConnectionChecker.new);
+  getIt.registerLazySingleton(Connectivity.new);
   getIt.registerLazySingleton(
-        () => CaptureErrorUseCase(),
+    () => CaptureErrorUseCase(),
   );
   getIt.registerLazySingleton(
-        () => Dio()
+    () => Dio()
       ..options = BaseOptions(baseUrl: AppConfig.baseUrl.value)
       ..interceptors.addAll([
         LogInterceptor(requestBody: true, responseBody: true),
@@ -261,6 +261,6 @@ Future<void> _setupCore() async {
   getIt.registerLazySingleton<HiveInterface>(() => Hive);
 
   getIt.registerLazySingleton<NetworkInfo>(
-        () => NetworkInfoImpl(getIt<InternetConnectionChecker>()),
+    () => NetworkInfoImpl(getIt<Connectivity>()),
   );
 }

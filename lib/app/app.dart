@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import '../core/core.dart';
 import '../features/auth/auth.dart';
 import '../features/settings/settings.dart';
-import '../l10n/l10n.dart';
+import '../l10n/app_localizations.dart';
 import 'config.dart';
 import 'route.dart';
 
