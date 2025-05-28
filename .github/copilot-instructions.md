@@ -15,7 +15,7 @@ lib/core/components/ in /atom, /molecule, /organism
 
 ## Core Components
 - Use components from `lib/core/components`: textfield, space, button, form widgets
-- Implement ReuseKit framework components throughout the project
+- Implement Reusable widget, extension, exceptions failure, network only in `lib/core`
 - Follow the established theme configuration
 
 <!-- ## Form Handling
@@ -40,7 +40,7 @@ lib/core/components/ in /atom, /molecule, /organism
 
 ## Code Architecture
 lib  
-├── app/app.dart ( all import for app folder)
+├── app/app.dart 
 ├── core/core.dart ( all import for core folder)
 │   ├── components
 │   ├── data
@@ -48,13 +48,14 @@ lib
 │   ├── extensions
 │   ├── failures
 │   ├── helpers
+│   ├── module
 │   ├── networks
 │   ├── pages
 │   ├── preferences
 │   ├── usecases
 │   ├── utils
 ├── features
-│   ├── auth/auth.dart( all import for auth folder)
+│   ├── auth/auth.dart and module.dart ( all import for auth folder  & for module.dart routing and dependency injection) 
 │   │   ├── data/data.dart (all import for auth data folder)
 │   │   │   ├── models/models.dart (all import for auth models folder)
 │   │   │   ├── repositories/repositories.dart (all import for auth repositories folder)
@@ -67,7 +68,7 @@ lib
 │   │       ├── blocs/blocs.dart (all import for auth blocs folder)
 │   │       ├── components/components.dart (all import for auth components folder)
 │   │       ├── pages/pages.dart (all import for auth pages folder)
-│   ├── home/home.dart  ( all import for home folder)
+│   ├── home/home.dart and module.dart ( all import for home folder & for module.dart routing and dependency injection) 
 │   │   ├── data/data.dart (all import for home data folder)
 │   │   │   ├── models/models.dart (all import for home models folder)
 │   │   │   ├── repositories/repositories.dart (all import for home repositories folder)
@@ -87,12 +88,11 @@ lib
 ## Naming
 - Follow view naming convention: `features/auth/presentation/pages/xxx/page.dart` (e.g., login, register)
 - Use the same page for relation feature (e.g., login, register, forgot password) 
-- Use `part of` or `part` directives in presentation pages/section to root features
+- Use `part of` or `part` directives in presentation pages/sections to xxx features
 - page do not need explicit imports as everything is available in core.dart
 
-## IMport
-jika ada service atau model, itu tidak perlu du import lagi,
-karena sudah ada di core.dart
+## Import
+jika ada usecase atau model yg sama maka tidak perlu di import lagi cukup import yg sudah ada.
 
 <!-- ## Validation
 validation menggunakan class Valdiator, dan di impplementasikan dengan formKey,
@@ -120,21 +120,23 @@ Q...(
 onChanged, tidak boleh di null kan. -->
 
 
-### Aturan untuk Reuseable Widget yang saya buat:
+<!-- ### Aturan untuk Reuseable Widget:
 * Tidak perlu mendefinisikan maxLength atau maxLines.
 * Tidak perlu mendefinisikan keyboardType:
 * Tidak perlu mengatur suffixIcon
 * Kalau pakai colorset seperti primaryColor, mestinya widget-nya tidak di definsiikan dengan const
 * Jangan mengatur height dari QButton
-* Jangan gunakan property selain yang saya contohkan di dokumentasi reuseable widget
+* Jangan gunakan property selain yang saya contohkan di dokumentasi reuseable widget -->
 
 
 ### REQUIRED
 Setiap membuat halaman baru wajib mengimport kedua hal ini:  
 import 'package:flutter/material.dart';
+import '../../../../../core/core.dart';
 
 ### STATE MANAGEMENT
-* Menggunakan bloc sesuai yg ada di auth
+* Menggunakan bloc, event, dan state
+* 
 
 ### Design
 - By default ketika saya membuat halaman itu diperuntukkan untuk mobile, kecuali saya meminta versi tablet atau desktop-nya
