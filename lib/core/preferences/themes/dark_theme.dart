@@ -20,8 +20,8 @@ class DarkTheme {
 
   ColorScheme get scheme => ColorScheme.dark(
         primary: primaryColor,
-        surface: primaryColor,
-        secondary: primaryColor,
+        surface: scaffoldColor,
+        secondary: secondaryColor,
       );
 
   ButtonThemeData get button => ButtonThemeData(
@@ -261,6 +261,16 @@ class DarkTheme {
         padding: EdgeInsets.zero,
         shape: const CircularNotchedRectangle(),
       );
+
+  DialogTheme get dialogTheme {
+    return DialogTheme(
+      backgroundColor: scaffoldColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Dimens.dp16),
+      ),
+      insetPadding: const EdgeInsets.all(Dimens.dp16),
+    );
+  }
 
   ThemeData get toTheme {
     return ThemeData(

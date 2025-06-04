@@ -33,6 +33,28 @@ class RegularText extends StatelessWidget {
     );
   }
 
+  factory RegularText.normal(
+    BuildContext context,
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
+    return RegularText(
+      text,
+      key: key,
+      style: TextStyle(
+        fontWeight: FontWeight.normal,
+        color: context.adaptiveTheme.solidTextColor,
+      ).merge(style),
+      align: align,
+      maxLine: maxLine,
+      overflow: overflow,
+    );
+  }
+
   factory RegularText.large(
     BuildContext context,
     String text, {
@@ -46,6 +68,28 @@ class RegularText extends StatelessWidget {
       text,
       key: key,
       style: context.theme.textTheme.bodyLarge?.merge(style),
+      align: align,
+      maxLine: maxLine,
+      overflow: overflow,
+    );
+  }
+
+  factory RegularText.medium(
+    BuildContext context,
+    String text, {
+    Key? key,
+    TextStyle? style,
+    int? maxLine,
+    TextOverflow? overflow,
+    TextAlign? align,
+  }) {
+    return RegularText(
+      text,
+      key: key,
+      style: TextStyle(
+        fontWeight: FontWeight.w500,
+        color: context.adaptiveTheme.solidTextColor,
+      ).merge(style),
       align: align,
       maxLine: maxLine,
       overflow: overflow,

@@ -13,6 +13,7 @@ class MainAssets {
 
   // Illustration
   static const image = '$_baseImagePath/illustration/image.webp';
+  static const placeholder = '$_baseImagePath/illustration/placeholder.svg';
 
   // SVG
   static const airplaneSvg = '$_baseImagePath/svg/airplane.svg';

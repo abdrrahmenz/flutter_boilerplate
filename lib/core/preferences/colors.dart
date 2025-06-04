@@ -30,8 +30,11 @@ class AppColors {
   });
 
   static const red = MaterialColor(0xFFB71C1C, {
-    100: Color(0xFFFFCDD2),
-    300: Color(0xFFF44336),
+    50: Color(0xFFFFEBCD), // Warna lebih terang
+    100: Color(0xFFFF8A00), // Warna lebih terang
+    150: Color(0xFFF79A10), // Warna lebih terang
+    200: Color(0xFFFEB8B8), // Warna lebih terang
+    300: Color(0xFFFF5C00), // Warna menengah
     500: Color(0xFFF44336),
     700: Color(0xFFD32F2F),
     900: Color(0xFFB71C1C),
@@ -45,11 +48,14 @@ class AppColors {
     900: Color(0xFF1F1D2B),
   });
 
-  static const white = MaterialColor(0xFFffffff, {
-    100: Color(0xFFFFFFFF),
-    300: Color(0xFFF6F6F6),
-    500: Color(0xFFECECEC),
-    700: Color(0xFFE1E1E1),
-    900: Color(0xFFD0D0D0),
+// Warna aktif untuk sholat
+  static const white = MaterialColor(0xFFFFFFFF, {
+    100: Color(0xFFFFFFFF), // Warna lebih terang untuk state aktif
+    200: Color(0xFFF5F5F5), // Warna untuk dp angsuran paket
+    300: Color(0xFFFBF3F2), // Warna menengah
+    400: Color(0xFFF2F2F2), // Warna menengah
+    500: Color(0xFFE0E0E0), // Warna utama
+    700: Color(0xFFA1A1A1), // Warna lebih gelap
+    900: Color(0xFF828282), // Warna tergelap
   });
 }

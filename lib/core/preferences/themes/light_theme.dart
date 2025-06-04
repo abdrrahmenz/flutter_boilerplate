@@ -8,20 +8,20 @@ class LightTheme {
 
   final Color primaryColor;
   static Color disabledTextColor = AppColors.grey[900]!;
-  static Color secondaryColor = AppColors.grey[900]!;
-  static Color disabledColor = AppColors.grey[900]!;
+  static Color secondaryColor = AppColors.white[700]!;
+  static Color disabledColor = AppColors.white[900]!;
   static Color textSolidColor = Colors.black;
   static Color errorColor = AppColors.red;
   static Color dividerColor = AppColors.purple[500]!;
-  static Color inputBackgroundColor = AppColors.white[500]!;
+  static Color inputBackgroundColor = AppColors.white;
   static Color scaffoldColor = AppColors.white;
   static Color cardColor = AppColors.white[500]!;
   static Color appBarColor = Colors.blue;
 
   ColorScheme get scheme => ColorScheme.light(
         primary: primaryColor,
-        surface: primaryColor,
-        secondary: primaryColor,
+        surface: scaffoldColor,
+        secondary: secondaryColor,
       );
 
   ButtonThemeData get button => ButtonThemeData(
@@ -261,6 +261,16 @@ class LightTheme {
         padding: EdgeInsets.zero,
         shape: const CircularNotchedRectangle(),
       );
+
+  DialogTheme get dialogTheme {
+    return DialogTheme(
+      backgroundColor: scaffoldColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Dimens.dp16),
+      ),
+      insetPadding: const EdgeInsets.all(Dimens.dp16),
+    );
+  }
 
   ThemeData get toTheme {
     return ThemeData(

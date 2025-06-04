@@ -34,6 +34,10 @@ dependencies:
   webview_flutter: ^4.13.0
   webview_flutter_android: ^4.7.0
   webview_flutter_wkwebview: ^3.22.0
+  path_drawing: ^1.0.1
+  dropdown_button2: ^2.3.9
+  file_picker: ^10.1.9
+  flutter_image_compress: ^2.4.0
 
 dev_dependencies:
   flutter_test:

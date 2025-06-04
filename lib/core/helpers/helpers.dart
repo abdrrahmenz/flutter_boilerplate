@@ -3,3 +3,4 @@ export 'bloc_event_transformer.dart';
 export 'input_formatter/input_formatter.dart';
 export 'validators.dart';
 export 'auth_interceptor.dart';
+export 'image_helper.dart';
