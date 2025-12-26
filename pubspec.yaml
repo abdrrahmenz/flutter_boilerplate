@@ -1,0 +1,97 @@
+name: flutter_boilerplate
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  bloc_concurrency: ^0.3.0
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
+  cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  dio: ^5.8.0+1 
+  equatable: ^2.0.7
+  flutter_bloc: ^9.1.1
+  flutter_easyloading: ^3.0.5
+  flutter_svg: ^2.1.0
+  formz: ^0.8.0
+  get_it: ^8.0.3
+  hive: ^2.2.3
+  image_picker: ^1.1.2
+  connectivity_plus: ^6.1.4
+  intl: ^0.20.2
+  json_annotation: ^4.9.0
+  path_provider: ^2.1.5
+  shimmer: ^3.0.0
+  stream_transform: ^2.1.1
+  webview_flutter: ^4.13.0
+  webview_flutter_android: ^4.7.0
+  webview_flutter_wkwebview: ^3.22.0
+  path_drawing: ^1.0.1
+  dropdown_button2: ^2.3.9
+  file_picker: ^10.1.9
+  flutter_image_compress: ^2.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  bloc_test: ^10.0.0
+  build_runner: ^2.4.15
+  flutter_lints: ^6.0.0
+  json_serializable: ^6.9.5
+
+dependency_overrides:
+  win32: ^5.5.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/images/bitmap/
+    - assets/images/illustration/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins/Poppins-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/poppins/Poppins-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/poppins/Poppins-ExtraLightItalic.ttf
+          weight: 200
+        - asset: assets/fonts/poppins/Poppins-Italic.ttf
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/poppins/Poppins-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/poppins/Poppins-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+          weight: 600
+          style: italic
