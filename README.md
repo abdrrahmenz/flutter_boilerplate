@@ -17,19 +17,35 @@ A production-ready Flutter boilerplate following Clean Architecture principles w
 
 ## ✨ Features
 
+### Architecture & State Management
 - **Clean Architecture** - Separation of concerns with data, domain, and presentation layers
 - **BLoC Pattern** - Predictable state management with flutter_bloc
-- **Module System** - Feature-based modular architecture with dependency injection
-- **shadcn_ui Design System** - Modern, accessible components with Geist Sans typography ([Migration Guide](SHADCN_MIGRATION.md))
-- **Form Validation** - Type-safe form validation with FormZ + shadcn_ui integration
-- **Internationalization** - Multi-language support with flutter_localizations
-- **Theme Support** - Dark/Light theme with Material 3 ColorScheme
-- **Network Layer** - Dio-based HTTP client with error handling
-- **Local Storage** - Hive for local data persistence
-- **Component Library** - Comprehensive reusable UI components (Atoms, Molecules, Organisms)
+- **Module System** - Feature-based modular architecture with dependency injection (GetIt)
+
+### UI & Design System
+- **shadcn_ui Components** - Modern, accessible UI components ([Migration Guide](SHADCN_MIGRATION.md))
+- **Geist Sans Typography** - 9 font weights for professional typography
+- **Material 3 Design** - Material You with dynamic ColorScheme (light/dark themes)
+- **Atomic Design** - Component library organized as Atoms, Molecules, and Organisms
+
+### Routing & Navigation
+- **go_router** - Declarative routing with deep linking support
+- **Route Guards** - Authentication-based navigation with automatic redirects
+- **Type-Safe Routes** - Named routes with compile-time safety
+- **Navigation Tracking** - Built-in observer for debugging and analytics
+
+### Forms & Validation
+- **FormZ Integration** - Type-safe form validation
+- **shadcn_ui Inputs** - Validated input components with error handling
+- **Real-time Validation** - Instant feedback with proper error messages
+
+### Infrastructure
+- **Network Layer** - Dio-based HTTP client with interceptors
+- **Local Storage** - Hive for offline data persistence
 - **Multi-Flavor** - Development, Staging, and Production environments
-- **Error Tracking** - Global error handling and monitoring
-- **Offline Support** - Local caching with connectivity detection
+- **Error Tracking** - Global error handling with RecordErrorUseCase
+- **Offline Support** - Automatic caching with connectivity detection
+- **Internationalization** - Multi-language support (English, Indonesian)
 
 ## 🏗️ Architecture
 
@@ -184,6 +200,8 @@ Each feature is a self-contained module with its own routes and dependencies.
 
 2. **Implement module.dart**
    ```dart
+   import 'package:go_router/go_router.dart';
+   
    class YourFeatureModule implements BaseModule {
      @override
      Future<void> inject(GetIt getIt) async {
@@ -205,13 +223,22 @@ Each feature is a self-contained module with its own routes and dependencies.
      }
      
      @override
-     Map<String, Route<dynamic>> routes(RouteSettings settings) {
-       return {
-         YourPage.routeName: MaterialPageRoute(
-           builder: (_) => const YourPage(),
-           settings: settings,
+     List<RouteBase> routes() {
+       return [
+         GoRoute(
+           path: '/your-feature',
+           name: 'your-feature',
+           builder: (context, state) => const YourPage(),
          ),
-       };
+         GoRoute(
+           path: '/your-feature/:id',
+           name: 'your-feature-detail',
+           builder: (context, state) {
+             final id = state.pathParameters['id']!;
+             return YourDetailPage(id: id);
+           },
+         ),
+       ];
      }
    }
    ```
@@ -325,51 +352,156 @@ class EmailInput extends FormzInput<String, EmailInputError> {
 
 ## 🧩 Components
 
-### Component Library Structure
+### shadcn_ui Design System
 
-The project includes a comprehensive component library following **Atomic Design**:
+The project uses **shadcn_ui** for modern, accessible components. See [SHADCN_MIGRATION.md](SHADCN_MIGRATION.md) for complete migration details.
 
-#### Atoms (Basic Building Blocks)
-- **Text Components**: `HeadingText`, `RegularText`, `SubTitleText`, `TitleText`
-- **Loading**: `Skeleton`, `SkeletonAnimation`
+#### Text Styling with Context Helpers
 
-#### Molecules (Composite Components)
-- **Buttons**: `ArrowButton`, `MiniElevatedButton`, `MiniOutlinedButton`, `MiniIconButton`, `DropdownMenuButton`
-- **Inputs**: `RegularInput`, `PasswordInput`, `SearchTextInput`, `PhoneTextInput`, `OtpTextInput`, `DropdownInput`, `EditableTextInput`
-- **Other**: `RadioCircle`, `ContentSheet`, `InputLabel`
+```dart
+import 'package:flutter_boilerplate/core/core.dart';
 
-#### Organisms (Complex Components)
-- **Cards**: `CardShadow`, `CardTicket`
-- **Widgets**: `ButtonWidget`, `SwitchWidget`, `EmptyWidget`, `LoadingComponent`
-- **Utilities**: `SmartNetworkImage`, `BottomSheetImagePicker`, `DottedBorder`, `BlinkAnimation`
+// Typography
+Text('Heading 1', style: context.h1)
+Text('Heading 2', style: context.h2)
+Text('Heading 3', style: context.h3)
+Text('Body Large', style: context.bodyLarge)
+Text('Body', style: context.body)
+Text('Muted text', style: context.muted)
+Text('Label', style: context.label)
+Text('Caption', style: context.caption)
+```
+
+#### Buttons (shadcn_ui)
+
+```dart
+import 'package:shadcn_ui/shadcn_ui.dart';
+
+// Primary button
+ShadButton(
+  onPressed: () {},
+  child: const Text('Submit'),
+)
+
+// Button variants
+ShadButton.outline(onPressed: () {}, child: const Text('Cancel'))
+ShadButton.ghost(onPressed: () {}, child: const Text('Skip'))
+ShadButton.destructive(onPressed: () {}, child: const Text('Delete'))
+ShadButton.secondary(onPressed: () {}, child: const Text('Secondary'))
+ShadButton.link(onPressed: () {}, child: const Text('Link'))
+
+// Button sizes
+ShadButton(size: ShadButtonSize.sm, ...)
+ShadButton(size: ShadButtonSize.lg, ...)
+
+// Full width button
+ShadButton(
+  width: double.infinity,
+  onPressed: () {},
+  child: const Text('Full Width'),
+)
+
+// With icon
+ShadButton(
+  leading: const Icon(Icons.add),
+  onPressed: () {},
+  child: const Text('Add Item'),
+)
+```
+
+#### Input Components (shadcn_ui)
+
+```dart
+// Text input
+ShadTextInput(
+  label: 'Email',
+  controller: emailController,
+  errorText: state.email.errorMessage,
+  keyboardType: TextInputType.emailAddress,
+)
+
+// Password input
+ShadPasswordInput(
+  label: 'Password',
+  controller: passwordController,
+  errorText: state.password.errorMessage,
+)
+
+// Search input
+ShadSearchInput(
+  placeholder: 'Search...',
+  onChanged: (value) => bloc.add(SearchEvent(query: value)),
+)
+
+// FormZ integration
+buildShadTextInput(
+  context: context,
+  label: 'Email',
+  formzInput: state.email,
+  onChanged: (value) => bloc.add(EmailChanged(value)),
+)
+```
+
+#### Switch Component
+
+```dart
+ShadSwitch(
+  value: isEnabled,
+  onChanged: (value) => setState(() => isEnabled = value),
+)
+```
+
+### Custom Components (Preserved)
+
+#### Atoms
+- `Skeleton`, `SkeletonAnimation` - Loading placeholders with shimmer effect
+
+#### Molecules
+- `RadioCircle` - Custom radio button (updated with shadcn theming)
+- `InputLabel` - Form input label with required indicator
+- `ContentSheet` - Bottom sheet with drag handle
+- `PhoneTextInput` - Phone number input with country picker
+- `OtpTextInput` - PIN/OTP input field
+- `DropdownInput` - Dropdown selector
+- `EditableTextInput` - Inline editable text
+
+#### Organisms
+- `CardShadow` - Elevated card with shadow (updated with shadcn theming)
+- `CardTicket` - Ticket-style card with decorative edges
+- `EmptyWidget` - Empty state display
+- `LoadingComponent` - Loading indicator with text
+- `SmartNetworkImage` - Cached network image with error handling
+- `BottomSheetImagePicker` - Image picker (camera/gallery)
+- `DottedBorder` - Dotted border container
+- `BlinkAnimation` - Blinking animation effect
+- `ChipWidget` - Chip/tag component
 
 ### Using Components
 
 ```dart
 import 'package:flutter_boilerplate/core/core.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
-// Text
-HeadingText('Welcome', fontSize: 24, fontWeight: FontWeight.bold)
-
-// Button
-ButtonWidget(
-  text: 'Submit',
-  onPressed: () {},
-  isLoading: false,
-)
-
-// Input
-RegularInput(
-  label: 'Email',
-  onChanged: (value) {},
-  errorText: 'Invalid email',
-)
-
-// Card
+// Card with content
 CardShadow(
-  child: YourContent(),
-  shadowColor: Colors.grey,
+  child: Column(
+    children: [
+      Text('Title', style: context.h3),
+      const SizedBox(height: 8),
+      Text('Description', style: context.body),
+    ],
+  ),
 )
+
+// Empty state
+EmptyWidget(message: 'No items found')
+
+// Loading state
+LoadingComponent()
+
+// Skeleton loading
+Skeleton(width: 200, height: 20)
+SkeletonAnimation(child: /* your content */)
 ```
 
 ## 🛠️ Development Guide
@@ -451,19 +583,81 @@ Follow these steps to add a new feature:
 9. **Register module** (module.dart)
 10. **Add to app/modules.dart**
 
-### Navigation
+### Navigation with go_router
 
-Navigation is handled through the module system:
+Declarative navigation using go_router:
 
 ```dart
-// Navigate to a route
-Navigator.pushNamed(context, ProductDetailPage.routeName, arguments: {'id': productId});
+// Navigate by path
+context.go('/products');
+
+// Navigate with parameters
+context.go('/products/123');
+
+// Navigate by name
+context.goNamed('product-detail', pathParameters: {'id': '123'});
+
+// Push (keep previous route)
+context.push('/settings');
 
 // Pop
-Navigator.pop(context);
+context.pop();
 
-// Replace
-Navigator.pushReplacementNamed(context, HomePage.routeName);
+// Replace current route
+context.replace('/login');
+
+// Pass extra data
+context.push('/edit-profile', extra: {'user': userModel});
+
+// Query parameters
+context.go('/search?q=flutter&category=mobile');
+```
+
+#### Route Guards & Authentication
+
+Automatic redirects based on authentication status:
+
+```dart
+// In app_router.dart
+redirect: (BuildContext context, GoRouterState state) {
+  final authBloc = GetIt.I<AuthBloc>();
+  final isAuthorized = authBloc.state.status == AuthStateStatus.authorized;
+  
+  // Redirect unauthorized users to login
+  if (!isAuthorized && !state.matchedLocation.startsWith('/auth')) {
+    return '/auth/login?redirect=${Uri.encodeComponent(state.matchedLocation)}';
+  }
+  
+  // Redirect authorized users away from auth pages
+  if (isAuthorized && state.matchedLocation.startsWith('/auth')) {
+    return '/home';
+  }
+  
+  return null; // No redirect
+};
+```
+
+#### Type-Safe Routes
+
+Define routes in `route_utils.dart`:
+
+```dart
+enum AppRoute {
+  splash('/splash', 'splash'),
+  login('/auth/login', 'login'),
+  register('/auth/register', 'register'),
+  home('/home', 'home'),
+  profile('/profile', 'profile'),
+  settings('/settings', 'settings');
+  
+  const AppRoute(this.path, this.name);
+  final String path;
+  final String name;
+}
+
+// Usage
+context.go(AppRoute.home.path);
+context.goNamed(AppRoute.profile.name);
 ```
 
 ### Internationalization
@@ -573,16 +767,33 @@ flutter test --coverage
 
 ## 📦 Key Dependencies
 
-- **flutter_bloc** (^9.1.1) - State management
-- **get_it** (^8.0.3) - Dependency injection
-- **dio** (^5.8.0) - HTTP client
+### Core
+- **flutter_bloc** (^9.1.1) - State management with BLoC pattern
+- **get_it** (^8.3.0) - Service locator for dependency injection
+- **go_router** (^14.6.1) - Declarative routing with deep linking
+- **equatable** (^2.0.7) - Value equality for Dart objects
+
+### UI & Design
+- **shadcn_ui** (^0.45.1) - Modern UI component library
+- **adaptive_theme** (^3.6.0) - Dark/light theme switching
+- **flutter_svg** (^2.0.17) - SVG rendering
+
+### Networking & Data
+- **dio** (^5.9.0) - HTTP client with interceptors
 - **dartz** (^0.10.1) - Functional programming (Either, Option)
-- **formz** (^0.8.0) - Form validation
-- **hive** (^2.2.3) - Local storage
-- **equatable** (^2.0.7) - Value equality
-- **json_annotation** (^4.9.0) - JSON serialization
+- **hive** (^2.2.3) - Fast NoSQL local database
+- **connectivity_plus** (^6.1.5) - Network connectivity detection
+
+### Forms & Validation
+- **formz** (^0.8.0) - Type-safe form validation
+- **json_annotation** (^4.9.0) - JSON serialization annotations
+- **json_serializable** (^6.11.2) - Code generation for JSON
+
+### Utilities
 - **cached_network_image** (^3.4.1) - Image caching
-- **connectivity_plus** (^6.1.4) - Network connectivity
+- **image_picker** (^1.1.2) - Camera and gallery picker
+- **file_picker** (^10.3.8) - File selection
+- **flutter_image_compress** (^2.3.0) - Image compression
 
 ## 🤝 Contributing
 
