@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../core.dart';
 
@@ -30,26 +31,26 @@ class ErrorPage extends StatelessWidget {
                 color: Colors.red,
               ),
               const SizedBox(height: 24),
-              const HeadingText(
+              Text(
                 'Page not found :(',
-                align: TextAlign.center,
-                style: TextStyle(
+                style: context.h3?.copyWith(
                   fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: .bold,
                 ),
+                textAlign: .center,
               ),
               const SizedBox(height: 16),
               if (error != null)
-                RegularText(
+                Text(
                   error.toString(),
-                  align: TextAlign.center,
-                  style: const TextStyle(
+                  style: context.bodyMedium?.copyWith(
                     fontSize: 14,
                     color: Colors.grey,
                   ),
+                  textAlign: .center,
                 ),
               const SizedBox(height: 32),
-              ElevatedButton(
+              ShadButton(
                 onPressed: () {
                   context.go('/home');
                 },

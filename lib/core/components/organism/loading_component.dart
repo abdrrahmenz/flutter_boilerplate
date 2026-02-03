@@ -15,7 +15,7 @@ class LoadingComponent extends StatelessWidget {
           children: [
             const CircularProgressIndicator(),
             Dimens.dp16.height,
-            RegularText.large(context, 'Loading...'),
+            Text('Loading...', style: context.bodyLarge),
           ],
         ),
       ),

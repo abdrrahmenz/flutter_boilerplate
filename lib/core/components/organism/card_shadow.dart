@@ -30,9 +30,11 @@ class CardShadow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.theme.colorScheme;
+    
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(radius ?? Dimens.dp24),
+      borderRadius: BorderRadius.circular(radius ?? Dimens.radiusLg),
       child: Container(
         width: width,
         padding: padding ??
@@ -42,29 +44,20 @@ class CardShadow extends StatelessWidget {
             ),
         margin: margin,
         decoration: BoxDecoration(
-          color: color ?? context.theme.scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(radius ?? Dimens.dp24),
+          color: color ?? colorScheme.surface,
+          borderRadius: BorderRadius.circular(radius ?? Dimens.radiusLg),
           border: border,
           image: image,
-          boxShadow: (radius ?? 0) == 0
-              ? isShadow
-                  ? [
-                      BoxShadow(
-                        color: context.theme.dividerColor.withValues(alpha: .5),
-                        offset: const Offset(3, 5),
-                        blurRadius: 10,
-                      ),
-                    ]
-                  : null
-              : isShadow == false
-                  ? null
-                  : [
-                      BoxShadow(
-                        color: context.theme.dividerColor.withValues(alpha: .5),
-                        offset: const Offset(3, 5),
-                        blurRadius: 10,
-                      ),
-                    ],
+          boxShadow: isShadow
+              ? [
+                  BoxShadow(
+                    color: colorScheme.shadow.withValues(alpha: 0.1),
+                    offset: const Offset(0, 2),
+                    blurRadius: 8,
+                    spreadRadius: 0,
+                  ),
+                ]
+              : null,
         ),
         child: child,
       ),

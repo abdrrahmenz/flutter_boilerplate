@@ -48,9 +48,9 @@ class MoreCardButton extends StatelessWidget {
             Row(
               mainAxisAlignment: .center,
               children: [
-                SubTitleText(
+                Text(
                   text ?? '-',
-                  style: TextStyle(
+                  style: context.subtitle1?.copyWith(
                     color: (textColor != null && textColor!.isNotEmpty)
                         ? Color(int.parse(textColor!.substring(1), radix: 16) +
                             0xFF000000)

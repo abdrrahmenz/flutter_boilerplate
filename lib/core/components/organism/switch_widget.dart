@@ -59,10 +59,14 @@ class _SwitchWidgetState extends State<SwitchWidget> {
   Widget text(BuildContext context) {
     final white = context.theme.scaffoldBackgroundColor;
     return Expanded(
-      child: SubTitleText(
+      child: Text(
         widget.isActive ? 'ON' : 'OFF',
-        style: TextStyle(color: white, fontSize: Dimens.dp12, height: 0),
-        align: TextAlign.center,
+        style: context.subtitle1?.copyWith(
+          color: white,
+          fontSize: Dimens.dp12,
+          height: 0,
+        ),
+        textAlign: .center,
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'flavor.dart';
 
 class AppConfig {
   static const String appName = 'Shamo';
-  static const String fontFamily = 'Poppins';
+  static const String fontFamily = 'Geist';
   static const String profileUrl =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
@@ -12,7 +12,7 @@ class AppConfig {
     dev: 'https://shamo.donisaputra.com/api',
     stag: 'https://shamo.donisaputra.com/api',
   );
-  static const AppTheme defaultTheme = .dark;
+  static const AppTheme defaultTheme = .light;
   static const bool autoStringifyEquatable = true;
   static const bool transparentStatusBar = true;
 }

@@ -31,7 +31,7 @@ class _FormSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               (Dimens.height(context) / 10).height,
-              RegularInput(
+              ShadTextInput(
                 label: 'Email Address',
                 prefixIcon: Icons.email_rounded,
                 hintText: 'Your Email Address',
@@ -44,7 +44,7 @@ class _FormSection extends StatelessWidget {
                 inputType: TextInputType.emailAddress,
               ),
               Dimens.dp16.height,
-              PasswordInput(
+              ShadPasswordInput(
                 label: 'Password',
                 hintText: 'Your Password',
                 onChange: (v) {
@@ -57,7 +57,8 @@ class _FormSection extends StatelessWidget {
                     : null,
               ),
               Dimens.dp32.height,
-              ElevatedButton(
+              ShadButton(
+                width: double.infinity,
                 onPressed: state.isValid
                     ? () {
                         FocusScope.of(context).unfocus();

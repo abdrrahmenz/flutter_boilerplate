@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../../../../app/config.dart';
 import '../../../../../core/core.dart';
 import '../../../../auth/auth.dart';
@@ -58,7 +59,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               bottomNavigationBar: Padding(
                 padding: const EdgeInsets.all(Dimens.dp16),
-                child: ElevatedButton(
+                child: ShadButton(
+                  width: double.infinity,
                   onPressed: state.isValid
                       ? () {
                           context.read<AuthBloc>().add(SubmitUpdateProfileEvent(

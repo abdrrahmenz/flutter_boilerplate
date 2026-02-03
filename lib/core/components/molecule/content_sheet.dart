@@ -57,8 +57,8 @@ class ContentSheet extends StatelessWidget {
       width: 80,
       height: 4,
       decoration: BoxDecoration(
-        color: context.adaptiveTheme.tertiaryColor.withAlpha(26),
-        borderRadius: BorderRadius.circular(Dimens.dp4),
+        color: context.theme.colorScheme.outline.withValues(alpha: 0.3),
+        borderRadius: BorderRadius.circular(Dimens.radiusMd),
       ),
     );
   }

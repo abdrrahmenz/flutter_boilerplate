@@ -38,9 +38,9 @@ class GradientButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: SubTitleText(
+          child: Text(
             text ?? 'Tambah',
-            style: TextStyle(
+            style: context.subtitle1?.copyWith(
               fontSize: fontSize ?? Dimens.dp12,
               color: white,
             ),

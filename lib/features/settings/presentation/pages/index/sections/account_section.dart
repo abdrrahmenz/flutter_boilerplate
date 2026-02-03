@@ -8,7 +8,7 @@ class _AccountSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SubTitleText('Account'),
+        Text('Account', style: context.subtitle1),
         Dimens.dp16.height,
         _tile('Edit Profile', onTap: () {
           context.push(AppRoute.profileEdit.path);
@@ -34,7 +34,7 @@ class _AccountSection extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            RegularText(title),
+            Text(title),
             const Icon(Icons.arrow_forward_ios_rounded, size: 18),
           ],
         ),

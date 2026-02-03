@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../../../../app/router/route_utils.dart';
 import '../../../../../core/core.dart';
@@ -22,8 +23,8 @@ class RegisterPage extends StatelessWidget {
         padding: const EdgeInsets.all(Dimens.dp16),
         children: [
           Dimens.dp24.height,
-          const HeadingText('Sign Up'),
-          const RegularText('Register and Happy Shoping'),
+          Text('Sign Up', style: context.h3),
+          Text('Register and Happy Shoping', style: context.bodyMedium),
           _FormSection(key: key),
         ],
       ),

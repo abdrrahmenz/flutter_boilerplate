@@ -108,10 +108,10 @@ class ButtonWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 24),
                         child: prefixIcon,
                       ),
-                    RegularText(
+                    Text(
                       text ?? '',
                       style: textStyle ??
-                          const TextStyle(
+                          context.bodyMedium?.copyWith(
                             color: AppColors.white,
                             fontWeight: .w600,
                             fontSize: Dimens.dp18,

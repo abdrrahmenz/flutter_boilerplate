@@ -26,8 +26,8 @@ class _HeadingSectionState extends State<_HeadingSection> {
               child: Column(
                 crossAxisAlignment: .start,
                 children: [
-                  HeadingText('Hallo, ${state.user?.name}'),
-                  RegularText('@${state.user?.username}'),
+                  Text('Hallo, ${state.user?.name}', style: context.h3),
+                  Text('@${state.user?.username}', style: context.bodyMedium),
                 ],
               ),
             ),
@@ -58,14 +58,15 @@ class _HeadingSectionState extends State<_HeadingSection> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Dimens.dp16),
           ),
-          title: const SubTitleText(
+          title: Text(
             'Are you sure sign out?',
-            align: .center,
+            style: context.subtitle1,
+            textAlign: .center,
           ),
-          content: RegularText.normalSolid(
-            context,
+          content: Text(
             'You will be logged out of this account, but we can login again.',
-            align: .center,
+            style: context.bodyMedium,
+            textAlign: .center,
           ),
           actionsAlignment: .center,
           actions: [

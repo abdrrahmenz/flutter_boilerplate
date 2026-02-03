@@ -52,10 +52,12 @@ class DropdownMenuButton extends StatelessWidget {
         spacing: Dimens.dp12,
         children: [
           SvgPicture.asset(icon, height: Dimens.dp16),
-          RegularText.medium(
-            context,
+          Text(
             label,
-            style: const TextStyle(fontSize: Dimens.dp12),
+            style: context.bodyMedium?.copyWith(
+              fontWeight: .w500,
+              fontSize: Dimens.dp12,
+            ),
           ),
         ],
       ),

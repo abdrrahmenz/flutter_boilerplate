@@ -35,9 +35,9 @@ class LanguageCard extends StatelessWidget {
               const SizedBox(width: Dimens.dp24),
               _buildFlag(),
               const SizedBox(width: Dimens.dp12),
-              SubTitleText(
+              Text(
                 country,
-                style: const TextStyle(fontSize: Dimens.dp12),
+                style: context.subtitle1?.copyWith(fontSize: Dimens.dp12),
               )
             ],
           ),

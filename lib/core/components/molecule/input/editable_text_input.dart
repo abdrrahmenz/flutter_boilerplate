@@ -47,7 +47,7 @@ class EditableTextInput extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Dimens.dp6.height,
-            RegularText.large(context, label),
+            Text(label, style: context.bodyLarge),
             TextField(
               controller: controller,
               style: style,

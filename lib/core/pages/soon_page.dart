@@ -24,15 +24,16 @@ class SoonPage extends StatelessWidget {
                 width: Dimens.width(context) * .7,
               ),
               Dimens.dp40.height,
-              const HeadingText(
+              Text(
                 'Masih Dalam Pengembangan',
-                align: .center,
+                style: context.h3,
+                textAlign: .center,
               ),
               Dimens.dp16.height,
-              RegularText.large(
-                context,
+              Text(
                 'Maaf konten ini masih dalam perkembangan, tetap tunggu dan nantikan update update dari kami.',
-                align: .center,
+                style: context.bodyLarge,
+                textAlign: .center,
               )
             ],
           ),

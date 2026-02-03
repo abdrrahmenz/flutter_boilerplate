@@ -39,6 +39,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   file_picker: ^10.1.9
   flutter_image_compress: ^2.4.0
+  shadcn_ui: ^0.45.1
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,26 @@ flutter:
     - assets/images/illustration/
 
   fonts:
+    - family: Geist
+      fonts:
+        - asset: assets/fonts/geist/geist-sans-latin-100-normal.ttf
+          weight: 100
+        - asset: assets/fonts/geist/geist-sans-latin-200-normal.ttf
+          weight: 200
+        - asset: assets/fonts/geist/geist-sans-latin-300-normal.ttf
+          weight: 300
+        - asset: assets/fonts/geist/geist-sans-latin-400-normal.ttf
+          weight: 400
+        - asset: assets/fonts/geist/geist-sans-latin-500-normal.ttf
+          weight: 500
+        - asset: assets/fonts/geist/geist-sans-latin-600-normal.ttf
+          weight: 600
+        - asset: assets/fonts/geist/geist-sans-latin-700-normal.ttf
+          weight: 700
+        - asset: assets/fonts/geist/geist-sans-latin-800-normal.ttf
+          weight: 800
+        - asset: assets/fonts/geist/geist-sans-latin-900-normal.ttf
+          weight: 900
     - family: Poppins
       fonts:
         - asset: assets/fonts/poppins/Poppins-Bold.ttf

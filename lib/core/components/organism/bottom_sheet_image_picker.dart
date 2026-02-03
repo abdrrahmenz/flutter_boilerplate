@@ -39,7 +39,7 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
                   child: const Icon(Icons.close, size: 32),
                 ),
                 Dimens.dp24.width,
-                TitleText(widget.title)
+                Text(widget.title, style: context.h4)
               ],
             ),
             Dimens.dp32.height,
@@ -112,10 +112,9 @@ class _BottomSheetImagePickerState extends State<BottomSheetImagePicker> {
             children: [
               Icon(image, size: 40),
               Dimens.dp10.height,
-              RegularText.medium(
-                context,
+              Text(
                 title,
-                style: const TextStyle(fontWeight: .w500),
+                style: context.bodyMedium?.copyWith(fontWeight: .w500),
               )
             ],
           ),

@@ -20,9 +20,10 @@ A production-ready Flutter boilerplate following Clean Architecture principles w
 - **Clean Architecture** - Separation of concerns with data, domain, and presentation layers
 - **BLoC Pattern** - Predictable state management with flutter_bloc
 - **Module System** - Feature-based modular architecture with dependency injection
-- **Form Validation** - Type-safe form validation with FormZ
+- **shadcn_ui Design System** - Modern, accessible components with Geist Sans typography ([Migration Guide](SHADCN_MIGRATION.md))
+- **Form Validation** - Type-safe form validation with FormZ + shadcn_ui integration
 - **Internationalization** - Multi-language support with flutter_localizations
-- **Theme Support** - Dark/Light theme with custom theming
+- **Theme Support** - Dark/Light theme with Material 3 ColorScheme
 - **Network Layer** - Dio-based HTTP client with error handling
 - **Local Storage** - Hive for local data persistence
 - **Component Library** - Comprehensive reusable UI components (Atoms, Molecules, Organisms)

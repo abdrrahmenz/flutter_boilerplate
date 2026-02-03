@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../../../core/core.dart';
 
 class ButtonActionConfirm extends StatelessWidget {
@@ -12,23 +13,25 @@ class ButtonActionConfirm extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: OutlinedButton(
+          child: ShadButton.outline(
             onPressed: onCancel,
-            child: RegularText.semiBoldSolid(
-              context,
+            child: Text(
               'Cancel',
-              style: TextStyle(color: context.theme.primaryColor),
+              style: context.bodyMedium?.copyWith(
+                fontWeight: .w600,
+              ),
             ),
           ),
         ),
         Dimens.dp14.width,
         Expanded(
-          child: ElevatedButton(
+          child: ShadButton(
             onPressed: onConfirm,
-            child: RegularText.semiBoldSolid(
-              context,
+            child: Text(
               'Yes',
-              style: TextStyle(color: context.theme.canvasColor),
+              style: context.bodyMedium?.copyWith(
+                fontWeight: .w600,
+              ),
             ),
           ),
         ),

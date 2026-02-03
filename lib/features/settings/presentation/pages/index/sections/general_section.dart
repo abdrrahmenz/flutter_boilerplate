@@ -8,7 +8,7 @@ class _GeneralSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SubTitleText('General'),
+        Text('General', style: context.subtitle1),
         Dimens.dp16.height,
         _tile('Privacy & Policy', onTap: () {
           Navigator.push(
@@ -57,7 +57,7 @@ class _GeneralSection extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            RegularText(title),
+            Text(title),
             const Icon(Icons.arrow_forward_ios_rounded, size: 18),
           ],
         ),

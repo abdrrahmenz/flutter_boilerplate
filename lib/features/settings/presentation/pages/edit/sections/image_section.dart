@@ -55,24 +55,30 @@ class _ImageSectionState extends State<_ImageSection> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextButton(
+              ShadButton.ghost(
                 onPressed: () {
                   Navigator.pop(context);
                   context
                       .read<FormAccountBloc>()
                       .add(const ChangeImageFormAccountEvent());
                 },
-                child: RegularText.mediumSolid(context, 'Camera'),
+                child: Text(
+                  'Camera',
+                  style: context.bodyMedium?.copyWith(fontWeight: .w500),
+                ),
               ),
               const Divider(),
-              TextButton(
+              ShadButton.ghost(
                 onPressed: () {
                   Navigator.pop(context);
                   context.read<FormAccountBloc>().add(
                         const ChangeImageFormAccountEvent(isGallery: true),
                       );
                 },
-                child: RegularText.mediumSolid(context, 'Gallery'),
+                child: Text(
+                  'Gallery',
+                  style: context.bodyMedium?.copyWith(fontWeight: .w500),
+                ),
               ),
             ],
           ),

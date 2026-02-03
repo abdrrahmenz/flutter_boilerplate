@@ -169,10 +169,9 @@ class _PhoneTextInputState extends State<PhoneTextInput> {
           height: Dimens.dp16,
         ),
         const SizedBox(width: Dimens.dp8),
-        RegularText.normalSolid(
-          context,
+        Text(
           phone.dialCode,
-          style: TextStyle(
+          style: context.bodyMedium?.copyWith(
             fontSize: 14,
             color: context.theme.scaffoldBackgroundColor,
           ),

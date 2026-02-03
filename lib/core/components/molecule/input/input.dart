@@ -1,6 +1,11 @@
 export 'dropdown_input.dart';
+export 'editable_text_input.dart';
+export 'formz_shad_input.dart';
 export 'otp_text_input.dart';
 export 'password_input.dart';
 export 'phone_input.dart';
 export 'regular_input.dart';
 export 'search_input.dart';
+export 'shad_password_input.dart';
+export 'shad_search_input.dart';
+export 'shad_text_input.dart';

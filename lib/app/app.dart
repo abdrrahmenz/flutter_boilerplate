@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../core/core.dart';
 import '../features/settings/settings.dart';
@@ -49,23 +50,38 @@ class _AppWidgetState extends State<_AppWidget> {
   Widget build(BuildContext context) {
     final languageState = context.watch<LanguageBloc>().state;
     final themeState = context.watch<ThemeBloc>().state;
+    final isDark = themeState.theme == AppTheme.dark;
 
-    return MaterialApp.router(
-      title: AppConfig.appName,
-      routerConfig: router,
-      theme: themeState.theme.toThemeData(),
-      locale: languageState.language != null
-          ? Locale(languageState.language!.code)
-          : null,
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      builder: EasyLoading.init(),
+    return ShadApp(
+      themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
+      darkTheme: ShadThemeData(
+        brightness: Brightness.dark,
+        colorScheme: AppColors.darkColorScheme,
+      ),
+      theme: ShadThemeData(
+        brightness: Brightness.light,
+        colorScheme: AppColors.lightColorScheme,
+      ),
+      materialThemeBuilder: (context, theme) => themeState.theme.toThemeData(),
+      builder: (context, child) {
+        return MaterialApp.router(
+          title: AppConfig.appName,
+          routerConfig: router,
+          theme: Theme.of(context),
+          locale: languageState.language != null
+              ? Locale(languageState.language!.code)
+              : null,
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          builder: EasyLoading.init(),
+        );
+      },
     );
   }
 }

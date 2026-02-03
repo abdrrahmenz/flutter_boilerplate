@@ -8,7 +8,7 @@ class RadioCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primary = context.theme.primaryColor;
+    final colorScheme = context.theme.colorScheme;
 
     return Container(
       width: Dimens.dp22,
@@ -16,14 +16,17 @@ class RadioCircle extends StatelessWidget {
       padding: const EdgeInsets.all(Dimens.dp2),
       decoration: BoxDecoration(
         border: Border.all(
-          color: isActive ? primary : context.theme.dividerColor,
+          color: isActive ? colorScheme.primary : colorScheme.outline,
           width: 2,
         ),
         shape: BoxShape.circle,
       ),
       child: isActive
           ? Container(
-              decoration: BoxDecoration(color: primary, shape: BoxShape.circle),
+              decoration: BoxDecoration(
+                color: colorScheme.primary,
+                shape: BoxShape.circle,
+              ),
             )
           : null,
     );

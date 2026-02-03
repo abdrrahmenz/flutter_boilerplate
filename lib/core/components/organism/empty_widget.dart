@@ -19,10 +19,10 @@ class EmptyWidget extends StatelessWidget {
               width: Dimens.width(context) * .3,
             ),
             Dimens.dp24.height,
-            RegularText.normal(
-              context,
+            Text(
               message ?? 'Tidak ada data ditemukan!',
-              align: TextAlign.center,
+              style: context.bodyMedium,
+              textAlign: .center,
             ),
           ],
         ),

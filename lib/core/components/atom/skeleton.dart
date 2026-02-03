@@ -17,12 +17,17 @@ class Skeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    final defaultColor = brightness == Brightness.dark
+        ? AppColors.purple[300]!
+        : AppColors.white[500]!;
+    
     return Container(
       width: width ?? double.infinity,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 4),
-        color: backgroundColor ?? context.theme.disabledColor.withAlpha(128),
+        color: backgroundColor ?? defaultColor,
       ),
     );
   }

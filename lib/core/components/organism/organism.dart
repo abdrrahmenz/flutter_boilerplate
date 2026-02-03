@@ -8,4 +8,4 @@ export 'dotted_border.dart';
 export 'loading_component.dart';
 export 'more_card.dart';
 export 'empty_widget.dart';
-export 'switch_widget.dart';
+// SwitchWidget replaced with ShadSwitch from shadcn_ui

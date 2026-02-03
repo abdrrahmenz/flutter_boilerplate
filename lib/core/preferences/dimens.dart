@@ -49,4 +49,14 @@ class Dimens {
   static const double dp800 = 800;
   static const double dp900 = 900;
   static const double dp1000 = 1000;
+
+  // ================================================== //
+  // SHADCN RADIUS SCALE - Mapped to shadcn standard sizes
+  // ================================================== //
+  static const double radiusSm = dp4; // Small radius (4px)
+  static const double radiusMd = dp6; // Medium radius (6px)
+  static const double radiusLg = dp8; // Large radius (8px)
+  static const double radiusXl = dp12; // Extra large radius (12px)
+  static const double radius2Xl = dp16; // 2XL radius (16px)
+  static const double radius3Xl = dp20; // 3XL radius (20px)
 }

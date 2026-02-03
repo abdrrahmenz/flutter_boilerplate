@@ -18,14 +18,13 @@ class InputLabel extends StatelessWidget {
       children: [
         Row(
           children: [
-            SubTitleText(label ?? ''),
+            Text(label ?? '', style: context.label),
             const SizedBox(width: Dimens.dp8),
             if (isRequired == true)
-              RegularText(
+              Text(
                 'Required',
-                style: TextStyle(
-                  color: context.adaptiveTheme.primaryColor,
-                  fontSize: Dimens.dp10,
+                style: context.caption?.copyWith(
+                  color: context.theme.colorScheme.primary,
                 ),
               )
           ],

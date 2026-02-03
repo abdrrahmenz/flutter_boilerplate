@@ -29,7 +29,7 @@ class _FormSectionState extends State<_FormSection> {
       builder: (context, state) {
         return Column(
           children: [
-            RegularInput(
+            ShadTextInput(
               controller: nameController,
               label: 'Name',
               hintText: 'Your name',
@@ -41,7 +41,7 @@ class _FormSectionState extends State<_FormSection> {
               errorText: state.name.isNotValid ? 'Please enter a name.' : null,
             ),
             Dimens.dp16.height,
-            RegularInput(
+            ShadTextInput(
               controller: usernameController,
               label: 'Username',
               hintText: 'Your username',
@@ -54,14 +54,14 @@ class _FormSectionState extends State<_FormSection> {
                   state.username.isNotValid ? 'Please enter a username.' : null,
             ),
             Dimens.dp16.height,
-            RegularInput(
+            ShadTextInput(
               controller: TextEditingController(text: widget.user?.email),
               label: 'Email Address',
               hintText: 'Your email address',
               readOnly: true,
             ),
             Dimens.dp16.height,
-            RegularInput(
+            ShadTextInput(
               controller: phoneController,
               label: 'Phone Number',
               hintText: 'Your phone number',
