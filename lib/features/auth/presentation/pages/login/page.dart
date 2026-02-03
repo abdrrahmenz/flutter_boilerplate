@@ -2,7 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../app/router/route_utils.dart';
 import '../../../../../core/core.dart';
 import '../../../auth.dart';
 
@@ -52,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    // Navigator.pushNamed(context, RegisterPage.routeName);
+                    context.push(AppRoute.register.path);
                   },
               )
             ],

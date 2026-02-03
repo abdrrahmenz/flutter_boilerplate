@@ -8,5 +8,6 @@ export 'module/module.dart';
 export 'networks/networks.dart';
 export 'pages/pages.dart';
 export 'preferences/preferences.dart';
+export 'router/route_transitions.dart';
 export 'usecases/usecases.dart';
 export 'utils/utils.dart';

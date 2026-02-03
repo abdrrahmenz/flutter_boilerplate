@@ -9,9 +9,6 @@ import '../features/settings/module.dart';
 /// Global key for accessing the application's navigator state.
 final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 
-/// Route observer to observe route changes.
-final RouteObserver<ModalRoute<dynamic>> routeObserver = RouteObserver<ModalRoute<dynamic>>();
-
 /// List of modules to be initialized in the application.
 var appModules = <BaseModule>[
   AuthModule(),

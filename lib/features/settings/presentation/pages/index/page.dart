@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:go_router/go_router.dart';
+
 import '../../../../../app/config.dart';
+import '../../../../../app/router/route_utils.dart';
 import '../../../../../core/core.dart';
 import '../../../../auth/auth.dart';
 import '../../../settings.dart';
@@ -20,11 +23,7 @@ class ProfilePage extends StatelessWidget {
       listener: (context, state) {
         if (state.status == AuthStateStatus.unAuthorized) {
           EasyLoading.dismiss();
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            LoginPage.routeName,
-            (route) => false,
-          );
+          context.go(AppRoute.login.path);
         } else if (state.status == AuthStateStatus.loading) {
           EasyLoading.show(status: 'Loading...');
         }

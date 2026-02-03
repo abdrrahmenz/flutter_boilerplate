@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../app/router/route_utils.dart';
 import '../../../../../core/core.dart';
 import '../../../../auth/auth.dart';
-import '../../../../home/home.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -12,17 +14,9 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.status == AuthStateStatus.unAuthorized) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            LoginPage.routeName,
-            (route) => false,
-          );
+          context.go(AppRoute.login.path);
         } else if (state.status == AuthStateStatus.authorized) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            MainPage.routeName,
-            (route) => false,
-          );
+          context.go(AppRoute.home.path);
         }
       },
       child: Scaffold(

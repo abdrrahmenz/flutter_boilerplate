@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 /// Base class for module implementation.
 ///
@@ -10,17 +10,23 @@ import 'package:get_it/get_it.dart';
 /// - Routing
 ///
 abstract class BaseModule {
-  /// Define routes for your module.
+  /// Define routes for your module using go_router.
   ///
   /// Example usage:
   ///
   /// ```dart
-  /// {
-  ///   '/home': MaterialPageRoute(builder: (_) => HomePage()),
-  ///   '/auth': CupertinoPageRoute(builder: (_) => AuthPage()),
+  /// [
+  ///   GoRoute(
+  ///     path: '/home',
+  ///     builder: (context, state) => HomePage(),
+  ///   ),
+  ///   GoRoute(
+  ///     path: '/auth',
+  ///     builder: (context, state) => AuthPage(),
+  ///   ),
   /// ]
   /// ```
-  Map<String, Route<dynamic>> routes(RouteSettings settings);
+  List<RouteBase> routes();
 
   /// Inject all dependencies.
   ///

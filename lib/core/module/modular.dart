@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 import '../core.dart';
 
@@ -20,30 +21,15 @@ class Modular {
     }
   }
 
-  /// Define routes for the application based on the modules.
-  static Route<dynamic> routes(RouteSettings settings) {
-    // List all routes module
-    final routeModules = <String, Route<dynamic>>{};
+  /// Aggregate routes from all modules for go_router.
+  static List<RouteBase> routes() {
+    final allRoutes = <RouteBase>[];
 
     for (var item in modulesX) {
-      routeModules.addAll(item.routes(settings));
+      allRoutes.addAll(item.routes());
     }
 
-    if (settings.name == SoonPage.routeName) {
-      return MaterialPageRoute(builder: (_) {
-        return SoonPage(
-          title: (settings.arguments as Map<String, dynamic>)['title'] as String,
-        );
-      });
-    }
-    return routeModules['${settings.name}'] ??
-        MaterialPageRoute(builder: (_) {
-          return const Scaffold(
-            body: Center(
-              child: Text('Page not found :('),
-            ),
-          );
-        });
+    return allRoutes;
   }
 
   /// Wrap the application with all BlocProviders from modules.

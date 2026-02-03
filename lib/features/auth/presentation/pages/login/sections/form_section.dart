@@ -9,11 +9,14 @@ class _FormSection extends StatelessWidget {
       listener: (context, state) {
         if (state.status == AuthStateStatus.authorized) {
           EasyLoading.dismiss();
-          // Navigator.pushNamedAndRemoveUntil(
-          //   context,
-          //   MainPage.routeName,
-          //   (route) => false,
-          // );
+          // Check for redirect parameter
+          final uri = GoRouterState.of(context).uri;
+          final redirect = uri.queryParameters['redirect'];
+          if (redirect != null && redirect.isNotEmpty) {
+            context.go(redirect);
+          } else {
+            context.go(AppRoute.home.path);
+          }
         } else if (state.status == AuthStateStatus.loading) {
           EasyLoading.show(status: 'Loading...');
         } else if (state.status == AuthStateStatus.unAuthorized) {

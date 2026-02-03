@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/core.dart';
 import 'settings.dart';
+import 'routes.dart';
 
 class SettingsModule implements BaseModule {
   @override
@@ -46,30 +47,8 @@ class SettingsModule implements BaseModule {
   }
 
   @override
-  Map<String, Route<dynamic>> routes(RouteSettings settings) {
-    // final args = (settings.arguments ?? {}) as Map;
-    return {
-      // ProfilePage.routeName: CupertinoPageRoute(
-      //   builder: (_) => const ProfilePage(),
-      //   settings: settings,
-      // ),
-      // FAQDetailPage.routeName: CupertinoPageRoute(
-      //   builder: (_) => FAQDetailPage(data: args['data']),
-      //   settings: settings,
-      // ),
-      // HelpDetailPage.routeName: CupertinoPageRoute(
-      //   builder: (_) => HelpDetailPage(data: args['data']),
-      //   settings: settings,
-      // ),
-      // default:
-      //   return CupertinoPageRoute(builder: (_) {
-      //     return const Scaffold(
-      //       body: Center(
-      //         child: Text('Page not found :('),
-      //       ),
-      //     );
-      //   });
-    };
+  List<RouteBase> routes() {
+    return settingsRoutes;
   }
 
   @override

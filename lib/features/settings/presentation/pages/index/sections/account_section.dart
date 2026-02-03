@@ -11,20 +11,15 @@ class _AccountSection extends StatelessWidget {
         const SubTitleText('Account'),
         Dimens.dp16.height,
         _tile('Edit Profile', onTap: () {
-          Navigator.pushNamed(context, EditProfilePage.routeName);
+          context.push(AppRoute.profileEdit.path);
         }),
         _tile('Your Orders', onTap: () {
           // Navigator.pushNamed(context, TransactionPage.routeName);
         }),
         _tile('Help', onTap: () {
-          Navigator.push(
-            context,
-            CupertinoPageRoute<void>(
-              builder: (context) => WebViewPage(
-                appBar: AppBar(title: const Text('Help')),
-                url: 'https://shamo.donisaputra.com/help',
-              ),
-            ),
+          context.push(
+            AppRoute.soon.path,
+            extra: {'title': 'Help'},
           );
         }),
       ],

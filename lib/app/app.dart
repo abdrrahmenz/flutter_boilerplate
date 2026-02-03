@@ -8,7 +8,7 @@ import '../core/core.dart';
 import '../features/settings/settings.dart';
 import '../l10n/app_localizations.dart';
 import 'config.dart';
-import 'modules.dart';
+import 'router/app_router.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -50,9 +50,9 @@ class _AppWidgetState extends State<_AppWidget> {
     final languageState = context.watch<LanguageBloc>().state;
     final themeState = context.watch<ThemeBloc>().state;
 
-    return MaterialApp(
+    return MaterialApp.router(
       title: AppConfig.appName,
-      navigatorKey: navigationKey,
+      routerConfig: router,
       theme: themeState.theme.toThemeData(),
       locale: languageState.language != null
           ? Locale(languageState.language!.code)
@@ -65,9 +65,6 @@ class _AppWidgetState extends State<_AppWidget> {
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      navigatorObservers: [routeObserver],
-      onGenerateRoute: Modular.routes,
-      home: const SplashPage(),
       builder: EasyLoading.init(),
     );
   }
